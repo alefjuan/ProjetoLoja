@@ -1,15 +1,21 @@
 import Product from "./Product";
+import { SuplementCategory } from "./SuplementCategory";
+import { ICategorizable } from "../interface/ICategorizable";
 
-export class Suplement extends Product {
+export class Suplement extends Product implements ICategorizable {
+    categoria: SuplementCategory;
 
-    sabor : string;
-    constructor(id : number, name: string, marca: string, preco: number, sabor:string) {
-        super(id, name, marca, preco);
-        this.sabor=sabor;
+    constructor() {
+        super();
+        this.categoria = SuplementCategory.VITAMINAS; // Valor padrão
     }
 
-    exibirSuplemento():void{
-        console.log(`Id: ${this.id}\nNome: ${this.name}\nMarca: ${this.marca}\nPreço: ${this.preco}\nSabor: ${this.sabor}`)
+    public setCategoria(categoria: SuplementCategory): void {
+        this.categoria = categoria;
+    }
+
+    public exibirProduto(): void {
+        console.log(`Id: ${this.id}\nNome: ${this.name}\nMarca: ${this.marca}\nPreço: ${this.preco}\nCategoria: ${this.categoria}`);
         super.divisao();
     }
 }

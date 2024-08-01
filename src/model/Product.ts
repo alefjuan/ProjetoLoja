@@ -1,52 +1,49 @@
-export default class Product
-{
-    id: number;
-    name : string;
-    marca : string;
-    preco : number;
+import { IProduct } from "../interface/IProduct";
 
+export default abstract class Product implements IProduct {
+    id: number = 0;
+    name: string = "";
+    marca: string = "";
+    preco: number = 0;
 
-    constructor(id:number,name:string, marca: string, preco:number){
-        this.id = id;
-        this.name = name;
-        this.marca = marca;
-        this.preco = preco;
-    }
-    public getId():number {
+    public getId(): number {
         return this.id;
     }
-    public setId(id:number) {
+
+    public setId(id: number): void {
         this.id = id;
     }
-    
-    public getNome():string {
+
+    public getNome(): string {
         return this.name;
     }
-    public setNome(nome:string) {
+
+    public setNome(nome: string): void {
         this.name = nome;
     }
 
-    public getMarca() : string {
+    public getMarca(): string {
         return this.marca;
     }
-    
-    public setMarca(marca:string) : void {
+
+    public setMarca(marca: string): void {
         this.marca = marca;
     }
 
-    public getPreco() : number {
+    public getPreco(): number {
         return this.preco;
     }
-    
-    public setPreco(preco:number) : void {
-        if (isNaN(preco)) throw new Error("O preço deve ser um número");
+
+    public setPreco(preco: number): void {
+        if (isNaN(preco)) {
+            throw new Error("O preço deve ser um número");
+        }
         this.preco = preco;
     }
 
-    // exibirInformacoes(): void {
-    //     console.log(`Nome: ${this.name}, Preço: ${this.preco}, Tipo: ${this.tipo}, Sabor: ${this.sabor},`);
-    // }
-    public divisao():void{
-        console.log("\n - - - - - - - - - - - - - - - - -\n")
+    abstract exibirProduto(): void;
+
+    public divisao(): void {
+        console.log("\n - - - - - - - - - - - - - - - - -\n");
     }
 }
