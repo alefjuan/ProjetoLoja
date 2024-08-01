@@ -5,13 +5,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Suplement = void 0;
 const Product_1 = __importDefault(require("./Product"));
+const SuplementCategory_1 = require("./SuplementCategory");
 class Suplement extends Product_1.default {
-    constructor(id, name, marca, preco, sabor) {
-        super(id, name, marca, preco);
-        this.sabor = sabor;
+    constructor() {
+        super();
+        this.categoria = SuplementCategory_1.SuplementCategory.VITAMINAS; // Valor padrão
     }
-    exibirSuplemento() {
-        console.log(`Id: ${this.id}\nNome: ${this.name}\nMarca: ${this.marca}\nPreço: ${this.preco}\nSabor: ${this.sabor}`);
+    setCategoria(categoria) {
+        this.categoria = categoria;
+    }
+    exibirProduto() {
+        console.log(`Id: ${this.id}\nNome: ${this.name}\nMarca: ${this.marca}\nPreço: ${this.preco}\nCategoria: ${this.categoria}`);
         super.divisao();
     }
 }

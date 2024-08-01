@@ -6,12 +6,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Clothe = void 0;
 const Product_1 = __importDefault(require("./Product"));
 class Clothe extends Product_1.default {
-    constructor(id, name, marca, preco, tamanho) {
-        super(id, name, marca, preco);
-        this.tamanho = tamanho;
-    }
-    exibirRoupa() {
-        console.log(`Id: ${this.id}\nNome: ${this.name}\nMarca: ${this.marca}\nPreço: ${this.preco}\nTamanho: ${this.tamanho}`);
+    // tamanho : number;
+    // constructor(id : number, name: string, marca: string, preco: number, tamanho:number) {
+    //     super(id, name, marca, preco);
+    //     this.tamanho=tamanho;
+    // }
+    exibirProduto() {
+        console.log(`Id: ${this.id}\nNome: ${this.name}\nMarca: ${this.marca}\nPreço: ${this.preco}`);
         super.divisao();
     }
 }
