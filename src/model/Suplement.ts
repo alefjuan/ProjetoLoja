@@ -7,7 +7,7 @@ export class Suplement extends Product implements ICategorizable {
 
     constructor() {
         super();
-        this.categoria = SuplementCategory.VITAMINAS; // Valor padrão
+        this.categoria = SuplementCategory.OUTROS; // Valor padrão
     }
 
     public setCategoria(categoria: SuplementCategory): void {
@@ -15,7 +15,8 @@ export class Suplement extends Product implements ICategorizable {
     }
 
     public exibirProduto(): void {
-        console.log(`Id: ${this.id}\nNome: ${this.name}\nMarca: ${this.marca}\nPreço: ${this.preco}\nCategoria: ${this.categoria}`);
+        console.log(`\nId: ${this.id}\nNome: ${this.name}\nMarca: ${this.marca}\nPreço: ${this.preco}\nCategoria: ${this.categoria}`);//sobrescrita 
         super.divisao();
     }
+    
 }

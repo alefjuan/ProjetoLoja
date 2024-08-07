@@ -9,13 +9,13 @@ const SuplementCategory_1 = require("./SuplementCategory");
 class Suplement extends Product_1.default {
     constructor() {
         super();
-        this.categoria = SuplementCategory_1.SuplementCategory.VITAMINAS; // Valor padrão
+        this.categoria = SuplementCategory_1.SuplementCategory.OUTROS; // Valor padrão
     }
     setCategoria(categoria) {
         this.categoria = categoria;
     }
     exibirProduto() {
-        console.log(`Id: ${this.id}\nNome: ${this.name}\nMarca: ${this.marca}\nPreço: ${this.preco}\nCategoria: ${this.categoria}`);
+        console.log(`\nId: ${this.id}\nNome: ${this.name}\nMarca: ${this.marca}\nPreço: ${this.preco}\nCategoria: ${this.categoria}`);
         super.divisao();
     }
 }
