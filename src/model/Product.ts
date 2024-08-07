@@ -1,4 +1,5 @@
 import { IProduct } from "../interface/IProduct";
+import Errors from "../errors/CustomErrors"
 
 export default abstract class Product implements IProduct {
     id: number = 0;
@@ -34,16 +35,33 @@ export default abstract class Product implements IProduct {
         return this.preco;
     }
 
-    public setPreco(preco: number): void {
-        if (isNaN(preco)) {
-            throw new Error("O preço deve ser um número");
+    // Sobrecarga do método setPreco
+    public setPreco(preco: number): void;
+    public setPreco(preco: string): void;
+
+    public setPreco(preco: number | string): void {
+        if (typeof preco === "number") {
+            if (isNaN(preco)) {
+                throw new Errors("O preço deve ser um número");
+            }
+            this.preco = preco;
+        } else if (typeof preco === "string") {
+            const parsedPreco = parseFloat(preco);
+            if (isNaN(parsedPreco)) {
+                throw new Errors("O preço deve ser um número");
+            }
+            this.preco = parsedPreco;
+        } else {
+            throw new Errors("Tipo inválido para preço");
         }
-        this.preco = preco;
     }
 
-    abstract exibirProduto(): void;
+    public exibirProduto(): void {
+        const precoString = this.preco.toFixed(2); // Formata o preço como string com duas casas decimais
+        console.log(`Id: ${this.id}\nNome: ${this.name}\nMarca: ${this.marca}\nPreço: ${precoString}`);
+    }
 
     public divisao(): void {
-        console.log("\n - - - - - - - - - - - - - - - - -\n");
+        console.log("\n - - - - - - - - - - - - - - - - -");
     }
 }
